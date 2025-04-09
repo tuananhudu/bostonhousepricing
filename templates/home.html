@@ -1,3 +1,160 @@
-<h1>
-    HEllo
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boston House Price Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            display: flex;
+            overflow: hidden;
+            width: 95%;
+            max-width: 1000px;
+        }
+
+        .card-img {
+            flex: 1 1 45%;
+            background: url('https://www.bing.com/th/id/OIP.MDbftBl9_MT-SELXIvw_OAHaEa?w=294&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2') no-repeat center center;
+            background-size: cover;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            min-height: 550px;
+        }
+
+        .card-form {
+            flex: 1 1 55%;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        form input[type="text"] {
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            transition: 0.3s ease;
+        }
+
+        form input[type="text"]:focus {
+            border-color: #66a6ff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102, 166, 255, 0.2);
+        }
+
+        button {
+            grid-column: span 2;
+            padding: 15px;
+            margin-top: 10px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+            border: none;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #5a67d8, #6b46c1);
+        }
+
+        .result {
+            margin-top: 25px;
+            grid-column: span 2;
+            background: #d1f5f0;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0a3d62;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex-direction: column;
+                border-radius: 0;
+            }
+
+            .card-img {
+                min-height: 200px;
+                border-radius: 0;
+            }
+
+            .card-form {
+                padding: 30px 20px;
+            }
+
+            form {
+                grid-template-columns: 1fr;
+            }
+
+            button, .result {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-img"></div>
+        <div class="card-form">
+            <h1>Boston House Price Predictor 🏡</h1>
+            <form action="{{ url_for('predict') }}" method="post">
+                <input type="text" name="CRIM" placeholder="Crime rate (CRIM)" required />
+                <input type="text" name="ZN" placeholder="Residential land zone (ZN)" required />
+                <input type="text" name="INDUS" placeholder="Non-retail business (INDUS)" required />
+                <input type="text" name="CHAS" placeholder="Charles River dummy (CHAS)" required />
+                <input type="text" name="NOX" placeholder="Nitric oxides (NOX)" required />
+                <input type="text" name="RM" placeholder="Avg. rooms (RM)" required />
+                <input type="text" name="Age" placeholder="Age of house (AGE)" required />
+                <input type="text" name="DIS" placeholder="Distance to employment centers (DIS)" required />
+                <input type="text" name="RAD" placeholder="Access to highways (RAD)" required />
+                <input type="text" name="TAX" placeholder="Property tax rate (TAX)" required />
+                <input type="text" name="PTRATIO" placeholder="Pupil-teacher ratio (PTRATIO)" required />
+                <input type="text" name="B" placeholder="Proportion of blacks (B)" required />
+                <input type="text" name="LSTAT" placeholder="Lower status population (LSTAT)" required />
+                <button type="submit">🔍 Dự đoán giá nhà</button>
+                {% if prediction_text %}
+                    <div class="result">{{ prediction_text }}</div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>
