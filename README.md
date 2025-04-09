@@ -6,7 +6,8 @@
 2. [HerokuAccount](https://heroku.com)
 3. [VSCodeIDE](http://code.visualstudio.com/)
 4. [GitCLI](https://git-scm.com/docs/gitcli)
-
+## 
+1 Sản phầm dự đoán giá nhả 
 # Hướng dẫn sử dụng 
 1.Các bạn git clone về xong thiết lập môi trường như phần ở dưới đây 
 2.Cài các thư mục cần thiết như mình đã để ở phần requirement.txt
@@ -23,4 +24,3 @@ conda activate venv/
  Đây là 1 project nhỏ mình làm để học cách build ra một app cho mọi người trải nghiệm
  Đây là bài đầu tiên mình làm sau khi học build model mà không thể demo được sản phẩm
  Sau project này mình sẽ cố gắng để cải tiến cho nó chuyên nghiệp hơn 
- 
